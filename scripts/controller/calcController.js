@@ -85,7 +85,7 @@ class CalcController {
             this._audio.currentTime = 0;
 
             this._audio.play();
-            
+
         }
 
     }
@@ -488,6 +488,13 @@ class CalcController {
     }
 
     set displayCalc(value){
+
+        if (value.toString().length > 10){
+            
+            this.setError();
+            
+            return false;
+        }
 
         this._displayCalcEl.innerHTML = value;
 
