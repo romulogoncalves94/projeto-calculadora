@@ -27,8 +27,7 @@ class CalcController {
             this.displayCalc = parseFloat(text);
 
             console.log(text)
-        })
-
+        });
     }
 
     copyToClipboard(){
@@ -69,7 +68,6 @@ class CalcController {
 
             });
         });
-
     }
 
     toggleAudio(){
@@ -87,7 +85,6 @@ class CalcController {
             this._audio.play();
 
         }
-
     }
 
     initKeyBoard(){
@@ -142,9 +139,7 @@ class CalcController {
                 break;
 
             }
-
         });
-
     }
 
     addEventListenerAll(element, events, fn){
@@ -153,8 +148,7 @@ class CalcController {
 
             element.addEventListener(event, fn, false);
 
-        })
-    
+        });
     }
 
     clearAll(){
@@ -204,15 +198,21 @@ class CalcController {
             this.calc();
 
         }
-
     }
 
     getResult(){
 
+        try{
+            return eval(this._operation.join(""));
 
+        } catch(e){
 
-        return eval(this._operation.join(""));
+            setTimeout(() => {
 
+                this.setError();
+
+            }, 1);
+        }
     }
 
     calc(){
@@ -274,7 +274,6 @@ class CalcController {
                 break;
     
             }
-
         }
 
         if (!lastItem) {
@@ -328,9 +327,7 @@ class CalcController {
                 this.setLastNumberToDisplay();
 
             }
-
         }
-
     }
 
     setError(){
@@ -419,7 +416,6 @@ class CalcController {
                 break;
 
         }
-
     }
 
     initButtonsEvents(){
@@ -440,10 +436,8 @@ class CalcController {
 
                 btn.style.cursor = "pointer";
 
-            })
-
-        })
-
+            });
+        });
     }
 
     setDisplayDateTime(){
@@ -511,5 +505,4 @@ class CalcController {
         this._currentDate = value;
 
     }
-
 }
